@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AngularJsTest01.Controllers
+namespace AngularJsTest02.Controllers
 {
     public class HomeController : Controller
     {
