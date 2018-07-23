@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="container-fluid">
+    <div class="jumbotron">
+        <h3>Test 01 App</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4" ng-controller="HomeCtrl as homeCtrl">
+            <h4>Test Area 1</h4>
+            <div class="form-group">
+                <label class="control-label">TwoWay</label>
+                <p>Name: {{employees[0].firstName + ' ' + employees[0].lastName}}</p>
+            </div>
+            <div class="form-group">
+                <label class="control-label">OneWayFirst</label>
+                <p>Name: {{::employees[0].firstName}} {{employees[0].lastName}}</p>
+            </div>
+            <div class="form-group">
+                <label class="control-label">BindTemplate</label>
+                <p ng-bind-template="Name: {{::employees[0].firstName}} {{employees[0].lastName}}"></p>
+                <input class="form-control" id="Value1" ng-model="homeCtrl.value1" />
+                <input class="form-control" id="Value2" ng-model="homeCtrl.value2" />
+                <button type="button" class="btn btn-success" ng-click="homeCtrl.calc();">Calc</button>
+                <p ng-bind="homeCtrl.sumResult + ' just calculated!'"></p>
+                <input class="form-control" id="ResultValue" ng-model="homeCtrl.sumResult" />
+                <label class="control-label">First</label>
+                <input class="form-control" id="ChangeFirst" ng-model="employees[0].firstName" />
+                <label class="control-label">Last</label>
+                <input class="form-control" id="ChangeLast" ng-model="employees[0].lastName" />
+            </div>
+        </div>
+        <div class="col-md-4" ng-controller="Home2">
+            <h4>Test Area </h4>
+            <div class="form-group">
+                <p>Name: {{employees[0].firstName + ' ' + employees[0].lastName}}</p>
+                <input class="form-control" id="Value1" ng-model="value1" />
+                <input class="form-control" id="Value2" ng-model="value2" />
+                <button type="button" class="btn btn-success" ng-click="calc();">Calc</button>
+                <input class="form-control" id="ResultValue" ng-model="sumResult" />
+                <input class="form-control" id="ChangeFirst" ng-model="employees[0].firstName" />
+            </div>
+        </div>
+        <div class="col-md-4" ng-controller="Home2">
+            <h4>Test Table Area </h4>
+            <div class="form-group">
+                <p>Name: {{employees[0].firstName + ' ' + employees[0].lastName}}</p>
+                <div style="margin-bottom : 10px">
+                    <label class="radio-inline">
+                        <input type="radio"  value="1" ng-model="rowLimit" />Top 1
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" value="2" ng-model="rowLimit" />Top 2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" value="999999" ng-model="rowLimit" />All
+                    </label>
+                </div>
+                <input type="checkbox" ng-model="errorTest" />
+                <ng-include src="getUrl()"></ng-include>
+                <label>Properies of First Emp</label>
+                <ul>
+                    <li ng-repeat="(key, value) in employees[0]">{{key}} = {{value}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" ng-controller="HomeCtrl as homeCtrl">
+            <h4>Test 4 Switch</h4>
+            <div  ng-cloak ng-repeat="usertype in homeCtrl.radioTests" onload="homeCtrl.showRadioArea()">
+                <input type="radio" name="radioType" value="{{usertype}}" ng-checked="$first" ng-model="homeCtrl.radioType"/>{{usertype}}
+            </div>
+            <div ng-cloak ng-switch="homeCtrl.radioType">
+                <div ng-switch-when="secondTest" style="background-color: cadetblue ">The second value picked</div>
+                <div ng-switch-when="thirdTest" style="background-color: beige ">The third value picked</div>
+                <div ng-switch-default="firstTest" style="background-color: lightcoral ">The first value picked</div>
+
+            </div>
+        </div>
+        <div class="col-md-4" ng-controller="HomeCtrl3 as vm">
+            <h4>Test 5 http ajax</h4>
+            <span class="alert alert-danger" ng-show="vm.errorMsg != ''">{{vm.errorMsg}}</span>
+            <div>total rows: {{vm.courses.length}}</div>
+            <table class="table table-condensed table-hover ">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Course Name</th>
+                        <th>Category</th>
+                        <th>Timeline</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td colspan="5">
+                            <div style="background-color:lightblue; text-align:center;">Please load Data</div>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="course in vm.courses">
+                        <td>{{$index+1}}</td>
+                        <td>{{course.name | uppercase}}</td>
+                        <td>{{course.category | lowercase}}</td>
+                        <td>{{course.timeline}}</td>
+                        <td>{{course.price | currency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button ng-click="vm.loadData()">Load Data</button>
+        </div>
+    </div>
+</div>
