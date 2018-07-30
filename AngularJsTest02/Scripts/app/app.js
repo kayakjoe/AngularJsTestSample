@@ -27,12 +27,16 @@
             {
                 firstName: 'Matthew',
                 lastName: 'Taxman'
+            },
+            {
+                firstName: 'Paul',
+                lastName: 'Apostle'
             }
         ];
-        this.radioTests = ['firstTest', 'secondTest', 'thirdTest']
+        this.radioTests = ['firstTest', 'secondTest', 'thirdTest'];
         this.calc = function () {
             this.sumResult = srvCalc.calcTwo(this.value1, this.value2);
-        }
+        };
         this.getUrl = function () {
             if (this.errorTest) {
                 return '../Templates/PlainTableRepeat.html';
@@ -90,6 +94,10 @@
             {
                 firstName: 'Paul',
                 lastName: 'Apostle'
+            },
+            {
+                firstName: 'James',
+                lastName: 'Brother'
             }
         ];
         $scope.calc = function () {

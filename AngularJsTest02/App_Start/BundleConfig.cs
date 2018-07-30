@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace AngularJsTest01
+namespace AngularJsTest02
 {
     public class BundleConfig
     {

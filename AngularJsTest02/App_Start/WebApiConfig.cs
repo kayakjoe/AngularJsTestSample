@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace AngularJsTest01
+namespace AngularJsTest02
 {
     public static class WebApiConfig
     {
